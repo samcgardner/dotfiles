@@ -15,11 +15,14 @@ set autowriteall
 syntax on " I enjoy having syntax highlighting. Weird, I know
 set laststatus=2
 set termguicolors
+set encoding=utf8
+set completeopt=longest,menuone
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 let mapleader=','
 nmap ; :Buffers<CR>
 nmap <Leader>e :Files<CR>
-" incantations that may or may not be necessary to make true color work with
-" tmux
+nnoremap <leader>q :bp<cr>:bd #<cr>
+" incantations that may or may not be necessary to make true color work with tmux
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
@@ -41,6 +44,7 @@ colorscheme vim-material
 " general productivity plugins
 Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdtree'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'junegunn/fzf.vim'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
@@ -51,6 +55,8 @@ Plugin 'EinfachToll/DidYouMean'
 Plugin 'airblade/vim-rooter'
 let g:rooter_change_directory_for_non_project_files='home'
 Plugin 'w0rp/ale'
+Plugin 'shougo/deoplete.nvim'
+Plugin 'cespare/vim-sbd'
 
 " haskell specific stuff
 Plugin 'alx741/vim-hindent'
@@ -61,8 +67,6 @@ Plugin 'parsonsmatt/intero-neovim'
 " clojure specific stuff
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-salve'
-Plugin 'venantius/vim-eastwood'
-Plugin 'shougo/deoplete.nvim'
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
@@ -72,6 +76,13 @@ Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-classpath'
+
+" python specific stuff
+Plugin 'zchee/deoplete-jedi'
+Plugin 'nvie/vim-flake8'
+
+" maybe fix Unicode icons on a good day
+Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -84,11 +95,9 @@ command! -bang -nargs=* Rg
       \           : fzf#vim#with_preview('right:50%:hidden', '?'),
       \   <bang>0)
 
-" turn on nerdtree automatically. I'm trying out turning this off to see how I
-" feel about it
-"autocmd vimenter * NERDTree
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" This line causes us to focus on the editor pane rather than nerdtree when we
-" open Vim
-"autocmd VimEnter * wincmd p
+" turn on nerdtree automatically 
+autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" This line causes us to focus on the editor pane rather than nerdtree when we open Vim
+autocmd VimEnter * wincmd p
 
