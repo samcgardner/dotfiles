@@ -8,7 +8,7 @@ set softtabstop=2           " see multiple spaces as tabstops so <BS> does the r
 set expandtab               " converts tabs to white space
 set shiftwidth=2            " width for autoindents
 set autoindent              " indent a new line the same amount as the line just typed
-set number                  " add line numbers 
+set number                  " add line numbers
 set wildmode=longest,list   " get bash-like tab completions
 set cc=80                   " set an 80 column border for good coding style
 set autowriteall
@@ -33,6 +33,12 @@ call vundle#begin()
 " vundle and theme, which deserve their own block for reasons
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+" fix the fact that vim-airline uses some insane unicode character that nerd
+" fonts doesn't support
+let g:airline_symbols.maxlinenr = '≡'
 Plugin 'bling/vim-bufferline'
 Plugin 'hzchirs/vim-material'
 let g:airline_theme='material'

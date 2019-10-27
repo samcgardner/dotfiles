@@ -7,6 +7,7 @@ alias xclip='xclip -se c'
 
 # Enable powerline (daemon initialisation is performed in ~/.xinitrc)
 source /usr/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
+source ~/repos/powerlevel10k/powerlevel10k.zsh-theme
 
 # Initialise new-style completion
 autoload -Uz compinit
@@ -46,3 +47,6 @@ export PATH=/home/sam/.local/bin:$PATH
 export PATH=/home/sam/.gem/ruby/2.5.0/bin:$PATH
 export PATH=/home/sam/go/bin:$PATH
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
