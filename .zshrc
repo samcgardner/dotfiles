@@ -12,7 +12,7 @@ source /usr/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
 autoload -Uz compinit
 compinit
 
-# Enable FZF bindings and completion 
+# Enable FZF bindings and completion
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
