@@ -61,8 +61,6 @@ Plugin 'w0rp/ale'
 Plugin 'shougo/deoplete.nvim'
 let g:deoplete#enable_at_startup = 1
 Plugin 'cespare/vim-sbd'
-Plugin 'Chiel92/vim-autoformat'
-au BufWrite * :Autoformat
 
 " terraform specific stuff
 Plugin 'hashivim/vim-terraform'
