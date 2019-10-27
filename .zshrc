@@ -32,7 +32,7 @@ setopt    incappendhistory  #Immediately append to the history file, not just wh
 # Live in tmux 5ever
 if [ -z "$TMUX" ]
 then
-  tmux new-session -A -s -u tmux
+  tmux -u new-session -A -s tmux
 fi
 
 # Have a working ssh-agent
