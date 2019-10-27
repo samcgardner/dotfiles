@@ -17,6 +17,7 @@ set laststatus=2
 set termguicolors
 set encoding=utf8
 set completeopt=longest,menuone
+" Enable IDE-like autocompletion behaviour
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 let mapleader=','
 nmap ; :Buffers<CR>
@@ -31,32 +32,39 @@ call vundle#begin()
 
 " vundle and theme, which deserve their own block for reasons
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'godlygeek/csapprox'
 Plugin 'vim-airline/vim-airline'
 Plugin 'bling/vim-bufferline'
 Plugin 'hzchirs/vim-material'
 let g:airline_theme='material'
 let g:airline_powerline_fonts=1
-" let g:material_style='oceanic'
 set background=dark
 colorscheme vim-material
 
 " general productivity plugins
-Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'junegunn/fzf.vim'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'ervandew/supertab'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'Janko-m/vim-test'
 Plugin 'EinfachToll/DidYouMean'
 Plugin 'airblade/vim-rooter'
-let g:rooter_change_directory_for_non_project_files='home'
+let g:rooter_change_directory_for_non_project_files='current'
+let g:rooter_patterns = ['go.mod' ]
 Plugin 'w0rp/ale'
 Plugin 'shougo/deoplete.nvim'
+let g:deoplete#enable_at_startup = 1
 Plugin 'cespare/vim-sbd'
+Plugin 'Chiel92/vim-autoformat'
+au BufWrite * :Autoformat
+
+" terraform specific stuff
+Plugin 'hashivim/vim-terraform'
+Plugin 'juliosueiras/vim-terraform-completion'
+Plugin 'neomake/neomake'
+
+" jsonnet
+Plugin 'google/vim-jsonnet'
 
 " haskell specific stuff
 Plugin 'alx741/vim-hindent'
@@ -64,25 +72,10 @@ Plugin 'eagletmt/neco-ghc'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'parsonsmatt/intero-neovim'
 
-" clojure specific stuff
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-salve'
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#keyword_patterns = {}
-let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
-Plugin 'clojure-vim/async-clj-omni'
-Plugin 'eraserhd/parinfer-rust'
-Plugin 'guns/vim-sexp'
-Plugin 'tpope/vim-sexp-mappings-for-regular-people'
-Plugin 'guns/vim-clojure-static'
-Plugin 'tpope/vim-classpath'
-
-" python specific stuff
-Plugin 'zchee/deoplete-jedi'
-Plugin 'nvie/vim-flake8'
-
-" maybe fix Unicode icons on a good day
+" Collection of questionably-useful plugins that claim to fix various
+" graphical stuff in terminal mode
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'godlygeek/csapprox'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -95,9 +88,9 @@ command! -bang -nargs=* Rg
       \           : fzf#vim#with_preview('right:50%:hidden', '?'),
       \   <bang>0)
 
-" turn on nerdtree automatically 
-autocmd vimenter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" turn on nerdtree automatically. Turns out that isn't a great idea in many cases
+" autocmd vimenter * NERDTree
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " This line causes us to focus on the editor pane rather than nerdtree when we open Vim
-autocmd VimEnter * wincmd p
+" autocmd VimEnter * wincmd p
 
