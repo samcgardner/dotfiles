@@ -6,7 +6,6 @@ alias git='noglob git'
 alias xclip='xclip -se c'
 
 # Enable powerline (daemon initialisation is performed in ~/.xinitrc)
-source /usr/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
 source ~/repos/powerlevel10k/powerlevel10k.zsh-theme
 
 # Initialise new-style completion
