@@ -64,6 +64,13 @@ Plugin 'cespare/vim-sbd'
 
 " terraform specific stuff
 Plugin 'hashivim/vim-terraform'
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
+autocmd! filetypedetect BufRead,BufNewFile *.tf
+autocmd BufRead,BufNewFile *.tf set filetype=terraform
+autocmd BufRead,BufNewFile *.tfvars set filetype=terraform
+autocmd BufRead,BufNewFile *.tfstate set filetype=json
+autocmd BufRead,BufNewFile *.tfstate.backup set filetype=json
 Plugin 'juliosueiras/vim-terraform-completion'
 Plugin 'neomake/neomake'
 
