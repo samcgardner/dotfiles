@@ -76,6 +76,8 @@ Plugin 'neomake/neomake'
 
 " jsonnet
 Plugin 'google/vim-jsonnet'
+autocmd BufRead,BufNewFile *.jsonnet set filetype=jsonnet
+autocmd BufRead,BufNewFile *.libsonnet set filetype=jsonnet
 
 " haskell specific stuff
 Plugin 'alx741/vim-hindent'
