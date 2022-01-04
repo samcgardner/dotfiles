@@ -12,6 +12,7 @@ source ~/repos/powerlevel10k/powerlevel10k.zsh-theme
 # Initialise new-style completion
 autoload -Uz compinit
 compinit
+source <(kubectl completion zsh)
 
 # Enable FZF bindings and completion
 source /usr/share/fzf/key-bindings.zsh
