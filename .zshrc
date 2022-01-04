@@ -30,10 +30,12 @@ setopt    sharehistory      #Share history across terminals
 setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
 
 
+plugins=(git ssh-agent)
+
 # Live in tmux 5ever
 if [ -z "$TMUX" ]
 then
-  tmux -u new-session -A -s tmux
+  ssh-agent tmux -u new-session -A -s tmux
 fi
 
 # Have a working ssh-agent
