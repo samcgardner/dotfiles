@@ -1,7 +1,8 @@
 bindkey -v
 
 # Basic aliases for sanity
-alias ls='ls --color=auto' alias vim='nvim'
+alias ls='ls --color=auto'
+alias vim='nvim'
 alias git='noglob git'
 alias xclip='xclip -se c'
 
