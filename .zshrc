@@ -38,8 +38,7 @@ then
   ssh-agent tmux -u new-session -A -s tmux
 fi
 
-# Have a working ssh-agent
-plugins=(git ssh-agent)
+source ~/.vonagerc
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
