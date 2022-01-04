@@ -85,6 +85,10 @@ Plugin 'eagletmt/neco-ghc'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'parsonsmatt/intero-neovim'
 
+" golang specific stuff
+Plugin 'fatih/vim-go'
+let g:go_fmt_command = "goimports"
+
 " Collection of questionably-useful plugins that claim to fix various
 " graphical stuff in terminal mode
 Plugin 'ryanoasis/vim-devicons'
